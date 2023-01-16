@@ -1,0 +1,51 @@
+(--CRUD--)
+Create
+Read
+Update
+Delete
+
+
+---despues de la mkemigrations se hace otra migracion pero a sqlmigration llamando a 0001 que e sel archivo creado en la migracion
+
+python manage.py sqlmigrate academic 0001
+
+---despues su vuelve hacer la migracion 
+
+python manage.py migrate
+
+---se hacede a shell co este coamndo
+
+python manage.py shell
+
+
+---buscar orm django
+
+---despues de ejecutar shell se accede a la class Creada en este caso Curso se llama  ala carpeta donde s ecreo la migracion academic.models y se importa la class name
+
+//Haci se agrega//
+>>>from academic.models import Curso
+>>>cur2  = Curso(name = 'matematicas',creditos = 8)
+>>> cur2.save()
+>>>cur3 = Curso.objects.create(name = 'English', creditos = 7 )
+
+//haci se hacede despues de cerra shell//
+//Haci se edita//
+>>> from academic.models import Curso
+>>> cur = Curso.objects.get(id=3)
+>>> print(cur.name)
+English
+>>> cur.creditos = 1
+>>> cur.save()
+>>> cursos = Curso.objects.all()
+>>> print(cursos)
+<QuerySet [<Curso: Curso object (1)>, <Curso: Curso object (2)>, <Curso: Curso object (3)>, <Curso: Curso object (4)>]>
+>>> print(cursos[2])
+Curso object (3)
+>>> print(cursos[2].name)
+English
+//Haci se borra//
+
+>>> cursoDelete  = Curso.objects.get(id=1)
+>>> cursoDelete.delete()
+(1, {'academic.Curso': 1})
+>>>
